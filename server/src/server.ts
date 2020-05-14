@@ -70,11 +70,6 @@ export default class Server {
     this.logger = new Logger();
     this.isLeader = null;
 
-    // Make console.log output json.
-    if (PROD) {
-      this.logger.overrideConsole();
-    }
-
     const app = (this.app = express());
 
     const staticOptions = {
@@ -336,6 +331,8 @@ export default class Server {
   async hasMigrated(): Promise<boolean> {
     this.print('checking migration status');
     const result = await redis.get(MAINTENANCE_VERSION_KEY);
+    console.log(this.version);
+    console.log(result);
     const hasMigrated = result == this.version;
     if (hasMigrated) {
       this.print('maintenance already performed');
