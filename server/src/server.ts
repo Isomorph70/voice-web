@@ -367,7 +367,7 @@ export default class Server {
 
     this.print('acquiring lock');
     const lock = await redlock.lock(
-      'common-voice-maintenance-lock-v1',
+      'common-voice-maintenance-lock-v2',
       1000 *
         60 *
         60 *

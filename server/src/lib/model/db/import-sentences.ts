@@ -105,7 +105,6 @@ async function importLocaleSentences(
               (id, text, is_used, locale_id, source, version)
               VALUES ${sentences
                 .map(sentence => {
-                  console.log(source == 'singleword-benchmark');
                   return `(${[
                     source == 'singleword-benchmark'
                       ? hashSentence(localeId + sentence)
